@@ -1,0 +1,5 @@
+{
+  "name": "LEAI Architecture AI",
+  "description": "An AI-powered architectural visualization platform using Gemini 2.5 Flash Image.",
+  "requestFramePermissions": []
+}
