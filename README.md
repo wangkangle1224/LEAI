@@ -35,8 +35,8 @@
 
 1. **克隆项目**
    ```bash
-   git clone https://github.com/your-username/leai-architecture-ai.git
-   cd leai-architecture-ai
+   git clone https://github.com/wangkangle1224/LEAI.git
+   cd LEAI
    ```
 
 2. **安装依赖**
