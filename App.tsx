@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { CustomSelect } from './components/CustomSelect';
 import { PromptMaster } from './components/PromptMaster';
 import { PromptLibrary } from './components/PromptLibrary';
+import { PromptReference } from './components/PromptReference';
 import { ChatInterface } from './components/ChatInterface';
 import { 
   DEFAULT_PROMPT, 
@@ -18,7 +19,7 @@ import { GenerationStatus, GalleryItem } from './types';
 import type { User, HistoryItem } from './services/api';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<'home' | 'chat'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'chat' | 'reference'>('home');
 
   // User State
   const [user, setUser] = useState<User | null>(null);
@@ -78,6 +79,7 @@ const App: React.FC = () => {
   // Sidebar State
   const [isPromptMasterOpen, setIsPromptMasterOpen] = useState(false);
   const [isPromptLibraryOpen, setIsPromptLibraryOpen] = useState(false);
+  const [isPromptReferenceOpen, setIsPromptReferenceOpen] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -946,6 +948,17 @@ const App: React.FC = () => {
         )}
 
         </>
+      ) : currentView === 'reference' ? (
+        <div className="relative z-10 pt-20">
+          <PromptReference
+            isOpen={true}
+            onClose={() => setCurrentView('home')}
+            onSelect={(selectedPrompt) => {
+              setPrompt(selectedPrompt);
+              setCurrentView('home');
+            }}
+          />
+        </div>
       ) : (
         <ChatInterface 
           prompt={chatPrompt || prompt}

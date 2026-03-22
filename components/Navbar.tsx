@@ -6,8 +6,8 @@ import type { User, HistoryItem } from '../services/api';
 type ModalType = 'login' | 'tasks' | 'invite' | 'recharge' | 'contact' | null;
 
 interface NavbarProps {
-  currentView: 'home' | 'chat';
-  onNavigate: (view: 'home' | 'chat') => void;
+  currentView: 'home' | 'chat' | 'reference';
+  onNavigate: (view: 'home' | 'chat' | 'reference') => void;
   isLoggedIn: boolean;
   user: User | null;
   onLogin: () => void;
@@ -229,6 +229,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                   >
                     AI对话改图
                     <span className="absolute -top-4 -right-6 flex h-4 items-center justify-center rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-1 text-[9px] text-white whitespace-nowrap">🔥香蕉模型</span>
+                  </a>
+                  <a 
+                    className={`${currentView === 'reference' ? 'text-white font-bold' : 'text-white/80 hover:text-white font-medium'} text-sm transition-colors cursor-pointer`}
+                    onClick={(e) => { e.preventDefault(); onNavigate('reference'); }}
+                  >
+                    提示词参考
                   </a>
                   <button 
                     onClick={() => setActiveModal('contact')}

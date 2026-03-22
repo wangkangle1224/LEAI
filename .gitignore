@@ -28,3 +28,7 @@ npm-debug.log*
 # 临时文件
 tmp/
 temp/
+
+# DOCX 临时解压文件
+docx_content/
+docxtemp.zip
